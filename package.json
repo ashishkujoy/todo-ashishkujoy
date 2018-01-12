@@ -1,0 +1,22 @@
+{
+  "name": "todo-ashishkujoy",
+  "version": "1.0.0",
+  "description": "## Objective",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STEP-tw/todo-ashishkujoy.git"
+  },
+  "author": "ashish kumar joy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/STEP-tw/todo-ashishkujoy/issues"
+  },
+  "homepage": "https://github.com/STEP-tw/todo-ashishkujoy#readme",
+  "devDependencies": {
+    "chai": "^4.1.2"
+  }
+}
