@@ -22,6 +22,10 @@ Users.prototype = {
     let user = this._registeredUsers[userName];
     let todo = new Todo(todoDetail.title,todoDetail.description||'');
     user[todoDetail.title] = todo;
+  },
+  deleteTodo:function(username,todoTitle){
+    let user = this._registeredUsers[username];
+    delete user[todoTitle];
   }
 }
 module.exports = Users;

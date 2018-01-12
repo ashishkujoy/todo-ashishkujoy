@@ -26,4 +26,14 @@ describe('Users',function(){
       assert.deepEqual(users.getUser('ashish'),expected);
     })
   })
+  describe('deleteTodo',function(){
+    it('should delete a todo of a given user',function(){
+      let todoDetails = {title:'hello'};
+      users.addNewTodo('ashish',todoDetails);
+      let expected = {'hello':new Todo('hello')};
+      assert.deepEqual(users.getUser('ashish'),expected);
+      users.deleteTodo('ashish','hello');
+      assert.deepEqual(users.getUser('ashish'),{});
+    })
+  })
 })
