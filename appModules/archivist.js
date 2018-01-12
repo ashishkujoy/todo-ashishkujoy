@@ -12,6 +12,7 @@ Archivist.prototype = {
     try{
       let fileContents = fs.readFileSync(this._storagePath,'utf8');
       this._registeredUsers = JSON.parse(fileContents);
+      console.console.log(this._registeredUsers);
     }catch(error){
       return;
     }

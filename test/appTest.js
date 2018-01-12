@@ -111,4 +111,18 @@ describe('app',function(){
       })
     })
   })
+  describe.only('GET /userDetails',function(){
+    it('should give userDetails',function(done){
+      let options ={
+        method:'GET',
+        url:'/userDetails',
+        headers:{cookie:'sessionid=123456'}
+      }
+      request(app,options,res=>{
+        th.status_is_ok(res);
+        th.body_contains(res,'{"arvind":"singh"}')
+        done();
+      })
+    })
+  })
 })

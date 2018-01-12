@@ -10,16 +10,15 @@ archivist.load();
 describe('Archivist',function(){
   describe('load',function(){
     it('should load the previously stored registered archivist',function(){
-      assert.deepEqual(archivist.getUser('arvind'),{});
+      assert.deepEqual(archivist.getUser('arvind'),{"arvind":"singh"});
       assert.deepEqual(archivist.getUser('ashish'),{});
       assert.deepEqual(archivist.getUser('joy'),{});
-
     })
   })
   describe('getUser',function(){
     it('should give the given user',function(){
-      let actual = archivist.getUser('ashish');
-      let expected = {};
+      let actual = archivist.getUser('arvind');
+      let expected = {'arvind':'singh'};
       assert.deepEqual(actual,expected);
     })
   })

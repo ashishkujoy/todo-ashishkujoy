@@ -97,3 +97,13 @@ const handleLogutReq = function(session,req,res){
   res.redirect('/index.html');
 }
 exports.handleLogutReq = handleLogutReq;
+
+const handleGetUserDetails = function(session,archivist,req,res) {
+  let sessionid = req.cookies.sessionid;
+  let username = session[sessionid];
+  let userDetails = archivist.getUser(username);”
+  res.statusCode = 200;
+  res.write(JSON.stringify(userDetails));
+  res.end()
+}
+exports.handleGetUserDetails=handleGetUserDetails

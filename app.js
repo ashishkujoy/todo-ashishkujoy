@@ -4,10 +4,10 @@ const handler = require('./handlers.js');
 const lib = require('./lib.js');
 const Users = require('./appModules/archivist.js');
 
-const archivist = new Users('./appTestData.js');
+const archivist = new Users('./appTestData.json');
 archivist.load();
-archivist.addNewUser('arvind');
-archivist.addNewUser('ashish');
+//archivist.addNewUser('arvind');
+//archivist.addNewUser('ashish');
 /*============================================================================*/
 const timeStamp = ()=>{
     let t = new Date();
@@ -66,5 +66,9 @@ app.get('/login.html',(req,res)=>{
 
 app.get('/logout',(req,res)=>{
   handler.handleLogutReq(session,req,res);
+})
+
+app.get('/userDetails',(req,res)=>{
+  handler.handleGetUserDetails(session,archivist,req,res);
 })
 module.exports = app;
