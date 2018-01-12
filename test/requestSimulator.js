@@ -7,6 +7,7 @@ let request = function(app,options,onComplete){
   req.url = options.url;
   let endCalled = false;
   req.headers = options.headers||{};
+  req.cookies = options.cookies || {};
   let res={
     end:()=>{
       res.finished = true;

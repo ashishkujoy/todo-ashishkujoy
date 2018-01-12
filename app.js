@@ -1,6 +1,7 @@
 const WebApp = require('./webapp');
 const fs = require('fs');
 const handler = require('./handlers.js');
+const lib = require('./lib.js');
 /*============================================================================*/
 const timeStamp = ()=>{
     let t = new Date();
@@ -20,11 +21,17 @@ const logger = function(fs,req,res) {
 /*============================================================================*/
 let app = WebApp.create();
 
+let session = {'123456':'arvind'}
+
 app.get('/',(req,res)=>{
   res.redirect('/index.html');
 })
 
 app.get('/userpage',(req,res)=>{
+  if(lib.isUserIsNotLoggedIn(req,session)){
+    console.log(req.cookies);
+    res.redirect('/login.html');
+  }
   let userpage = fs.readFileSync('./public/userpage.html','utf8');
   res.statusCode= 200;
   res.setHeader('Content-Type','text/html');

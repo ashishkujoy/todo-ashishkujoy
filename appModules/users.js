@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const Users = function(storagePath){
   this._storagePath = storagePath;
-  this._registeredUsers = {"ashish":{}};
+  this._registeredUsers = {"ashish":{},"arvind":{}};
 }
 
 Users.prototype = {

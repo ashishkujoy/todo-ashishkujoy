@@ -32,8 +32,14 @@ describe('app',function(){
     })
   })
   describe('GET /userpage',()=>{
+    it('should redirect to login page if user is not logged in',function(done){
+      request(app,{method:'GET',url:'/userpage',cookies:{}},res=>{
+        th.should_be_redirected_to(res,'/login.html');
+        done();
+      })
+    })
     it('give the userpage',(done)=>{
-      request(app,{method:'GET',url:'/userpage'},res=>{
+      request(app,{method:'GET',url:'/userpage',headers:{cookie:"sessionid=123456"}},res=>{
         th.status_is_ok(res);
         th.content_type_is(res,'text/html');
         th.body_contains(res,'user page');
