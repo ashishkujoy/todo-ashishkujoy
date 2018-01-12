@@ -5,11 +5,16 @@ let Users = require('../appModules/users.js');
 const Todo = require('../appModules/todo.js');
 let th = require('./testHelpers.js');
 
-let users = new Users('./testUsersData.json');
+let users = new Users('./appTestData.json');
 users.load();
 describe('Users',function(){
-  describe('load',function(done){
-    it('should load the previously stored registered users')
+  describe('load',function(){
+    it('should load the previously stored registered users',function(){
+      assert.deepEqual(users.getUser('arvind'),{});
+      assert.deepEqual(users.getUser('ashish'),{});
+      assert.deepEqual(users.getUser('joy'),{});
+
+    })
   })
   describe('getUser',function(){
     it('should give the given user',function(){

@@ -2,6 +2,13 @@ const WebApp = require('./webapp');
 const fs = require('fs');
 const handler = require('./handlers.js');
 const lib = require('./lib.js');
+const Users = require('./appModules/users.js');
+
+const users = new Users('./appTestData.js');
+users.load();
+users.addNewUser('arvind');
+users.addNewUser('ashish');
+console.log(users);
 /*============================================================================*/
 const timeStamp = ()=>{
     let t = new Date();
@@ -36,7 +43,6 @@ app.get('/',(req,res)=>{
 
 app.get('/userpage',(req,res)=>{
   if(lib.isUserIsNotLoggedIn(req,session)){
-    console.log(req.cookies);
     res.redirect('/login.html');
   }
   res.statusCode= 200;
@@ -62,4 +68,21 @@ app.post('/login',(req,res)=>{
   res.redirect('/userpage');
   return;
 })
+
+app.post('/addNewTodo',(req,res)=>{
+  if(lib.isUserIsNotLoggedIn(req,session)){
+    res.redirect('/login.html');
+    return;
+  }
+  let sessionid = req.cookies.sessionid;
+  let user = session[sessionid];
+  console.log(user);
+  let todoDetail = req.body;
+  console.log(todoDetail);
+  users.addNewTodo(user,todoDetail);
+  res.redirect('/userpage');
+  return;
+})
+
+
 module.exports = app;

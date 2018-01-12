@@ -61,4 +61,18 @@ describe('app',function(){
       })
     })
   })
+  describe('POST /addNewTodo',()=>{
+    it('should redirect to /userpage',function(done){
+      let options = {
+        method:'POST',
+        body:'title=todo',
+        headers:{cookie:'sessionid=123456'},
+        url:'/addNewTodo'
+      }
+      request(app,options,res=>{
+        th.should_be_redirected_to(res,'/userpage');
+        done();
+      })
+    })
+  });
 })

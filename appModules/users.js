@@ -3,23 +3,25 @@ const fs = require('fs');
 
 const Users = function(storagePath){
   this._storagePath = storagePath;
-  this._registeredUsers = {"ashish":{},"arvind":{}};
+  this._registeredUsers = {};
 }
+
 
 Users.prototype = {
   load:function(){
-    let filePath = this._storagePath;
-    let users = this;
-    fs.readFile(filePath,'utf8',function(error,contents){
-      if(error||contents=='') return;
-      user._registeredUsers = JSON.parse(contents);
-    })
+    try{
+      let fileContents = fs.readFileSync(this._storagePath,'utf8');
+      this._registeredUsers = JSON.parse(fileContents);
+    }catch(error){
+      return;
+    }
   },
   getUser:function(userName){
     return this._registeredUsers[userName];
   },
   addNewTodo:function(userName,todoDetail){
     let user = this._registeredUsers[userName];
+
     let todo = new Todo(todoDetail.title,todoDetail.description||'');
     user[todoDetail.title] = todo;
   },
@@ -38,6 +40,9 @@ Users.prototype = {
     let user = this._registeredUsers[username];
     let todo = user[oldTitle];
     todo.editDescription(newDescription);
+  },
+  addNewUser:function(username){
+    this._registeredUsers[username]={};
   }
 }
 module.exports = Users;
