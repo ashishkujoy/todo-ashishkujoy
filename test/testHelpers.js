@@ -31,7 +31,7 @@ th.should_have_cookie = (res,name,value)=> {
 
 th.should_have_expiring_cookie = (res,name,value)=> {
   let cookieText = res.headers['Set-Cookie'];
-  assert.include(cookieText,`${name}=${value}; Max-Age=5`);
+  assert.include(cookieText,`${name}=${value}; Max-Age=`);
 };
 
 module.exports = th;

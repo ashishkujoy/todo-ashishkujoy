@@ -56,7 +56,7 @@ describe('app',function(){
     })
     it('should give login failed and redirect to login page if username is invalid',function(done){
       request(app,{method:'POST',url:'/login',body:'username=badman'},res=>{
-        th.should_be_redirected_to(res,'/login');
+        th.should_be_redirected_to(res,'/login.html');
         done();
       })
     })
@@ -92,13 +92,22 @@ describe('app',function(){
       let options = {
         method:'GET',
         url:'/login.html',
-        headers:{cookie:'message=login failed; Max-Age=5'}
+        headers:{cookie:'loginFailed=true; Max-Age=5'}
       }
       request(app,options,res=>{
         th.status_is_ok(res);
         th.body_contains(res,'login page');
         th.body_contains(res,'login failed');
         done()
+      })
+    })
+  })
+  describe('GET /logout',function(){
+    it('should redirect to /index.html',function(done){
+      request(app,{method:'GET',url:'/logout',headers:{cookies:'sessionid=123'}},res=>{
+        th.should_be_redirected_to(res,'/index.html');
+        th.should_have_expiring_cookie(res,'sessionid');
+        done();
       })
     })
   })

@@ -4,11 +4,10 @@ const handler = require('./handlers.js');
 const lib = require('./lib.js');
 const Users = require('./appModules/archivist.js');
 
-const users = new Users('./appTestData.js');
-users.load();
-users.addNewUser('arvind');
-users.addNewUser('ashish');
-console.log(users);
+const archivist = new Users('./appTestData.js');
+archivist.load();
+archivist.addNewUser('arvind');
+archivist.addNewUser('ashish');
 /*============================================================================*/
 const timeStamp = ()=>{
     let t = new Date();
@@ -23,6 +22,7 @@ const logger = function(fs,req,res) {
     `${JSON.stringify(req.headers,null,2)}`,
     ''
   ].join('\n');
+  console.log(`${req.method}  ${req.url}`);
   fs.appendFile('./log.json',logs,()=>{});
 }
 /*============================================================================*/
@@ -32,24 +32,20 @@ let loginPage = fs.readFileSync('./public/login.html','utf8');
 let session = {'123456':'arvind'};
 let registeredUsers = ['arvind','ashish']
 /*-------------------------------------------------------------------------*/
-const userNotRegistered = function(username,registeredUsers){
-  return !registeredUsers.includes(username);
-}
+
 
 
 /*-------------------------------------------------------------------------*/
+app.use((req,res)=>{
+  logger(fs,req,res);
+})
+
 app.get('/',(req,res)=>{
   res.redirect('/index.html');
 })
 
 app.get('/userpage',(req,res)=>{
-  if(lib.isUserIsNotLoggedIn(req,session)){
-    res.redirect('/login.html');
-  }
-  res.statusCode= 200;
-  res.setHeader('Content-Type','text/html');
-  res.write(userpage);
-  res.end();
+  handler.handleUserpageReq(session,userpage,req,res)
 })
 
 app.usePostProcess((req,res)=>{
@@ -57,44 +53,18 @@ app.usePostProcess((req,res)=>{
 });
 
 app.post('/login',(req,res)=>{
-  let username = req.body.username;
-  if(userNotRegistered(username,registeredUsers)){
-    res.setHeader('Set-Cookie','loginFailed=true; Max-Age=4');
-    res.redirect('/login');
-    return;
-  }
-  let sessionid = 1996117;
-  session[sessionid]=username;
-  res.setHeader('Set-Cookie',`sessionid=${sessionid}`);
-  res.redirect('/userpage');
-  return;
+  handler.handleLoginPostReq(registeredUsers,session,req,res);
 })
 
 app.post('/addNewTodo',(req,res)=>{
-  if(lib.isUserIsNotLoggedIn(req,session)){
-    res.redirect('/login.html');
-    return;
-  }
-  let sessionid = req.cookies.sessionid;
-  let user = session[sessionid];
-  console.log(user);
-  let todoDetail = req.body;
-  console.log(todoDetail);
-  users.addNewTodo(user,todoDetail);
-  res.redirect('/userpage');
-  return;
+  handler.handleAddNewTodoReq(archivist,session,req,res);
 })
 
 app.get('/login.html',(req,res)=>{
-  let loginHtmlPage = loginPage;
-  let message = req.cookies.message;
-  if(message){
-    loginHtmlPage = loginHtmlPage.replace('<!-- message -->',`${message}`);
-  }
-  res.setHeader('Content-Type','text/html');
-  res.write(loginHtmlPage);
-  res.end()
+  handler.handleGetLoginPageReq(loginPage,req,res)
 })
 
-
+app.get('/logout',(req,res)=>{
+  handler.handleLogutReq(session,req,res);
+})
 module.exports = app;
