@@ -75,4 +75,31 @@ describe('app',function(){
       })
     })
   });
+  describe('GET /login.html',function(){
+    it('should give the login.html page',function(done){
+      let options = {
+        method:'GET',
+        url:'/login.html'
+      }
+      request(app,options,res=>{
+        th.status_is_ok(res);
+        th.body_contains(res,'login page');
+        th.body_does_not_contain(res,'login failed');
+        done()
+      })
+    })
+    it('should give the login.html page with login failed message',function(done){
+      let options = {
+        method:'GET',
+        url:'/login.html',
+        headers:{cookie:'message=login failed; Max-Age=5'}
+      }
+      request(app,options,res=>{
+        th.status_is_ok(res);
+        th.body_contains(res,'login page');
+        th.body_contains(res,'login failed');
+        done()
+      })
+    })
+  })
 })

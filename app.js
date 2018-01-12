@@ -28,6 +28,7 @@ const logger = function(fs,req,res) {
 /*============================================================================*/
 let app = WebApp.create();
 let userpage = fs.readFileSync('./public/userpage.html',"utf8");
+let loginPage = fs.readFileSync('./public/login.html','utf8');
 let session = {'123456':'arvind'};
 let registeredUsers = ['arvind','ashish']
 /*-------------------------------------------------------------------------*/
@@ -82,6 +83,17 @@ app.post('/addNewTodo',(req,res)=>{
   users.addNewTodo(user,todoDetail);
   res.redirect('/userpage');
   return;
+})
+
+app.get('/login.html',(req,res)=>{
+  let loginHtmlPage = loginPage;
+  let message = req.cookies.message;
+  if(message){
+    loginHtmlPage = loginHtmlPage.replace('<!-- message -->',`${message}`);
+  }
+  res.setHeader('Content-Type','text/html');
+  res.write(loginHtmlPage);
+  res.end()
 })
 
 
