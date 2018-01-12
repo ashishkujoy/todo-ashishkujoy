@@ -3,21 +3,25 @@ const fs = require('fs');
 
 const Users = function(storagePath){
   this._storagePath = storagePath;
-  this._registeredUsers = {};
+  this._registeredUsers = {"ashish":{}};
 }
 
 Users.prototype = {
   load:function(){
-    try{
-      let file = fs.readFileSync(this._storagePath,'utf8');
-      if(file=='') return;
-      this._registeredUsers = JSON.parse(file);
-    }catch(error){
-      return;
-    }
+    let filePath = this._storagePath;
+    let users = this;
+    fs.readFile(filePath,'utf8',function(error,contents){
+      if(error||contents=='') return;
+      user._registeredUsers = JSON.parse(contents);
+    })
   },
   getUser:function(userName){
     return this._registeredUsers[userName];
+  },
+  addNewTodo:function(userName,todoDetail){
+    let user = this._registeredUsers[userName];
+    let todo = new Todo(todoDetail.title,todoDetail.description||'');
+    user[todoDetail.title] = todo;
   }
 }
 module.exports = Users;
