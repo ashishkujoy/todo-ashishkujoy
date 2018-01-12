@@ -4,10 +4,10 @@ const Item = function(title) {
 }
 
 Item.prototype ={
-  mark:function(){
+  markDone:function(){
     this._done = true;
   },
-  unMark:function(){
+  unMarkDone:function(){
     this._done = false;
   },
   isDone:function(){

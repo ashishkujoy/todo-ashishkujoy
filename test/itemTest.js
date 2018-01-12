@@ -6,19 +6,19 @@ let th = require('./testHelpers.js');
 
 describe('Item',function(){
 
-  describe('mark',function(){
+  describe('markDone',function(){
     it('should done status as true',function(){
       let item = new Item('hello');
-      item.mark();
+      item.markDone();
       assert.isOk(item.isDone());
     })
   })
-  describe('unMark',function(){
+  describe('unMarkDone',function(){
     it('should done status as false',function(){
       let item = new Item('hello');
-      item.mark();
+      item.markDone();
       assert.isOk(item.isDone());
-      item.unMark();
+      item.unMarkDone();
       assert.isNotOk(item.isDone());
     })
   })
