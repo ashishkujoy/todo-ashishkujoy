@@ -54,5 +54,11 @@ describe('app',function(){
         done();
       })
     })
+    it('should give login failed and redirect to login page if username is invalid',function(done){
+      request(app,{method:'POST',url:'/login',body:'username=badman'},res=>{
+        th.should_be_redirected_to(res,'/login');
+        done();
+      })
+    })
   })
 })

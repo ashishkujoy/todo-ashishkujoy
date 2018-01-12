@@ -21,8 +21,15 @@ const logger = function(fs,req,res) {
 /*============================================================================*/
 let app = WebApp.create();
 let userpage = fs.readFileSync('./public/userpage.html',"utf8");
-let session = {'123456':'arvind'}
+let session = {'123456':'arvind'};
+let registeredUsers = ['arvind','ashish']
+/*-------------------------------------------------------------------------*/
+const userNotRegistered = function(username,registeredUsers){
+  return !registeredUsers.includes(username);
+}
 
+
+/*-------------------------------------------------------------------------*/
 app.get('/',(req,res)=>{
   res.redirect('/index.html');
 })
@@ -44,6 +51,11 @@ app.usePostProcess((req,res)=>{
 
 app.post('/login',(req,res)=>{
   let username = req.body.username;
+  if(userNotRegistered(username,registeredUsers)){
+    res.setHeader('Set-Cookie','loginFailed=true; Max-Age=4');
+    res.redirect('/login');
+    return;
+  }
   let sessionid = 1996117;
   session[sessionid]=username;
   res.setHeader('Set-Cookie',`sessionid=${sessionid}`);
