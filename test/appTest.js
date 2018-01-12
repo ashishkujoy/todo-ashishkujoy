@@ -124,5 +124,15 @@ describe('app',function(){
         done();
       })
     })
+    it('should give userDetails',function(done){
+      let options ={
+        method:'GET',
+        url:'/userDetails'
+      }
+      request(app,options,res=>{
+        th.status_is_not_found(res);
+        done();
+      })
+    })
   })
 })

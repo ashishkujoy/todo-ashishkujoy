@@ -6,7 +6,6 @@ const responseWithNotFound = function(res) {
 }
 exports.responseWithNotFound=responseWithNotFound;
 
-
 const getContentType = function(filePath) {
   let fileExtension = filePath.slice(filePath.lastIndexOf('.'));
   let contentTypes = {
@@ -101,7 +100,11 @@ exports.handleLogutReq = handleLogutReq;
 const handleGetUserDetails = function(session,archivist,req,res) {
   let sessionid = req.cookies.sessionid;
   let username = session[sessionid];
-  let userDetails = archivist.getUser(username);”
+  if(lib.isUserIsNotLoggedIn(req,session)){
+    responseWithNotFound(res);
+    return;
+  }
+  let userDetails = archivist.getUser(username);
   res.statusCode = 200;
   res.write(JSON.stringify(userDetails));
   res.end()
