@@ -31,5 +31,14 @@ describe('app',function(){
       })
     })
   })
-  describe()
+  describe('GET /userpage',()=>{
+    it('give the userpage',(done)=>{
+      request(app,{method:'GET',url:'/userpage'},res=>{
+        th.status_is_ok(res);
+        th.content_type_is(res,'text/html');
+        th.body_contains(res,'user page');
+        done();
+      })
+    })
+  })
 })

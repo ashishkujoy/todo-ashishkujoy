@@ -33,6 +33,11 @@ Users.prototype = {
     todo.editTitle(newTitle);
     user[newTitle] = todo;
     delete user[oldTitle];
+  },
+  editTodoDescription:function(username,newDescription){
+    let user = this._registeredUsers[username];
+    let todo = user[oldTitle];
+    todo.editDescription(newDescription);
   }
 }
 module.exports = Users;

@@ -24,6 +24,14 @@ app.get('/',(req,res)=>{
   res.redirect('/index.html');
 })
 
+app.get('/userpage',(req,res)=>{
+  let userpage = fs.readFileSync('./public/userpage.html','utf8');
+  res.statusCode= 200;
+  res.setHeader('Content-Type','text/html');
+  res.write(userpage);
+  res.end();
+})
+
 app.usePostProcess((req,res)=>{
   handler.processStaticFileRequest(fs,req,res);
 });
