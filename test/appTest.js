@@ -47,4 +47,12 @@ describe('app',function(){
       })
     })
   })
+  describe('POST /login',()=>{
+    it('should redirect to userpage',function(done){
+      request(app,{method:'POST',url:'/login',body:'username=ashish'},res=>{
+        th.should_be_redirected_to(res,'/userpage');
+        done();
+      })
+    })
+  })
 })

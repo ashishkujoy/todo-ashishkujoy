@@ -20,7 +20,7 @@ const logger = function(fs,req,res) {
 }
 /*============================================================================*/
 let app = WebApp.create();
-
+let userpage = fs.readFileSync('./public/userpage.html',"utf8");
 let session = {'123456':'arvind'}
 
 app.get('/',(req,res)=>{
@@ -32,7 +32,6 @@ app.get('/userpage',(req,res)=>{
     console.log(req.cookies);
     res.redirect('/login.html');
   }
-  let userpage = fs.readFileSync('./public/userpage.html','utf8');
   res.statusCode= 200;
   res.setHeader('Content-Type','text/html');
   res.write(userpage);
@@ -43,4 +42,12 @@ app.usePostProcess((req,res)=>{
   handler.processStaticFileRequest(fs,req,res);
 });
 
+app.post('/login',(req,res)=>{
+  let username = req.body.username;
+  let sessionid = 1996117;
+  session[sessionid]=username;
+  res.setHeader('Set-Cookie',`sessionid=${sessionid}`);
+  res.redirect('/userpage');
+  return;
+})
 module.exports = app;
