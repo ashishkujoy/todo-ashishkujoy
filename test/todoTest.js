@@ -10,11 +10,11 @@ describe('Todo',function(){
   })
   describe('addItem',function(){
     it('should add a new todo item',function(){
-      assert.deepEqual(todo.getItems(),{});
+      assert.deepEqual(todo.getAllItems(),{});
       todo.addItem('hello');
       let expected = {};
       expected.hello = new Item('hello');
-      assert.deepEqual(todo.getItems(),expected);
+      assert.deepEqual(todo.getAllItems(),expected);
     })
   })
   describe('deleteItem',function(){
@@ -22,9 +22,9 @@ describe('Todo',function(){
       todo.addItem('hello');
       let expected = {};
       expected.hello = new Item('hello');
-      assert.deepEqual(todo.getItems(),expected);
+      assert.deepEqual(todo.getAllItems(),expected);
       todo.deleteItem('hello');
-      assert.deepEqual(todo.getItems(),{});
+      assert.deepEqual(todo.getAllItems(),{});
     })
   })
   describe('markDone',function(){
@@ -32,10 +32,10 @@ describe('Todo',function(){
       todo.addItem('hello');
       let expected = {};
       expected.hello = new Item('hello');
-      assert.deepEqual(todo.getItems(),expected);
+      assert.deepEqual(todo.getAllItems(),expected);
       todo.markDone('hello');
       expected.hello.markDone();
-      assert.deepEqual(todo.getItems(),expected);
+      assert.deepEqual(todo.getAllItems(),expected);
     })
   })
   describe('unMarkDone',function(){
@@ -45,10 +45,10 @@ describe('Todo',function(){
       todo.markDone('hello');
       expected.hello = new Item('hello');
       expected.hello.markDone();
-      assert.deepEqual(todo.getItems(),expected);
+      assert.deepEqual(todo.getAllItems(),expected);
       todo.unMarkDone('hello');
       expected.hello.unMarkDone();
-      assert.deepEqual(todo.getItems(),expected);
+      assert.deepEqual(todo.getAllItems(),expected);
     })
   })
   describe('editTitle',function(){
@@ -70,10 +70,10 @@ describe('Todo',function(){
       todo.addItem('hello');
       let expected = {};
       expected.hello = new Item('hello');
-      assert.deepEqual(todo.getItems(),expected);
+      assert.deepEqual(todo.getAllItems(),expected);
       todo.editItemTitle('hello','byebye');
-      expected.hello.changeTitle('byebye');
-      assert.deepEqual(todo.getItems(),expected);
+      expected={'byebye':new Item('byebye')}
+      assert.deepEqual(todo.getAllItems(),expected);
     })
   })
 })

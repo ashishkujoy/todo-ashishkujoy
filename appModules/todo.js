@@ -20,7 +20,10 @@ Todo.prototype = {
     let item = this._items[itemTitle];
     item.unMarkDone();
   },
-  getItems:function(){
+  getItem:function(itemTitle){
+    return this._items[itemTitle];
+  },
+  getAllItems:function(){
     return this._items;
   },
   editTitle:function(newTitle){
@@ -38,6 +41,8 @@ Todo.prototype = {
   editItemTitle:function(itemTitle,newTitle){
     let item = this._items[itemTitle];
     item.changeTitle(newTitle);
+    this._items[newTitle]=item;
+    delete this._items[itemTitle];
   }
 }
 module.exports = Todo;

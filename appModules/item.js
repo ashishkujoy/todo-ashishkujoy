@@ -13,9 +13,6 @@ Item.prototype ={
   isDone:function(){
     return this._done;
   },
-  isNotDone:function(){
-    return this._done;
-  },
   getTitle:function(){
     return this._title;
   },
