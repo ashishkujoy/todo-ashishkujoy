@@ -25,8 +25,7 @@ app.get('/',(req,res)=>{
 })
 
 app.usePostProcess((req,res)=>{
-  if(res.finished) return;
-  handler.responseWithNotFound(res);
-})
+  handler.processStaticFileRequest(fs,req,res);
+});
 
 module.exports = app;
