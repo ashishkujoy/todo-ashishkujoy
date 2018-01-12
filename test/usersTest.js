@@ -36,4 +36,15 @@ describe('Users',function(){
       assert.deepEqual(users.getUser('ashish'),{});
     })
   })
+  describe('editTodoTitle',function(){
+    it('should change the title of todo of given user with new title',function(){
+      let todoDetails = {title:'hello'};
+      users.addNewTodo('ashish',todoDetails);
+      let expected = {'hello':new Todo('hello')};
+      assert.deepEqual(users.getUser('ashish'),expected);
+      users.editTodoTitle('ashish','hello','byebye');
+      expected = {'byebye':new Todo('byebye')};
+      assert.deepEqual(users.getUser('ashish'),expected);
+    })
+  })
 })
