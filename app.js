@@ -2,7 +2,7 @@ const WebApp = require('./webapp');
 const fs = require('fs');
 const handler = require('./handlers.js');
 const lib = require('./lib.js');
-const Users = require('./appModules/users.js');
+const Users = require('./appModules/archivist.js');
 
 const users = new Users('./appTestData.js');
 users.load();

@@ -1,13 +1,13 @@
 const Todo = require('./todo.js');
 const fs = require('fs');
 
-const Users = function(storagePath){
+const Archivist = function(storagePath){
   this._storagePath = storagePath;
   this._registeredUsers = {};
 }
 
 
-Users.prototype = {
+Archivist.prototype = {
   load:function(){
     try{
       let fileContents = fs.readFileSync(this._storagePath,'utf8');
@@ -45,4 +45,4 @@ Users.prototype = {
     this._registeredUsers[username]={};
   }
 }
-module.exports = Users;
+module.exports = Archivist;
