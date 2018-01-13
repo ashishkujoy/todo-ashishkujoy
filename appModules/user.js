@@ -6,6 +6,9 @@ const User = function(name){
 }
 
 User.prototype = {
+  getName:function(){
+    return this._name;
+  },
   addNewTodo:function(todoTitle,description){
     this._todos[todoTitle]= new Todo(todoTitle,description||'');
   },

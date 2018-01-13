@@ -2,13 +2,12 @@ const WebApp = require('./webapp');
 const fs = require('fs');
 const handler = require('./handlers.js');
 const lib = require('./lib.js');
-const Users = require('./appModules/archivist.js');
+const Archivist = require('./appModules/archivist.js');
 
-const archivist = new Users('./appTestData.json');
-archivist.load();
-//archivist.addNewUser('arvind');
-//archivist.addNewUser('ashish');
-/*============================================================================*/
+let archivist = new Archivist('./appTestData.json');
+archivist.addNewUser('foo');
+archivist.addNewTodo('foo',{title:'foofaa'});
+archivist.addNewTodo('foo',{title:'foofaa2'});
 const timeStamp = ()=>{
     let t = new Date();
     return `${t.toDateString()} ${t.toLocaleTimeString()}`;
@@ -25,50 +24,41 @@ const logger = function(fs,req,res) {
   console.log(`${req.method}  ${req.url}`);
   fs.appendFile('./log.json',logs,()=>{});
 }
-/*============================================================================*/
 let app = WebApp.create();
 let userpage = fs.readFileSync('./public/userpage.html',"utf8");
 let loginPage = fs.readFileSync('./public/login.html','utf8');
-let session = {'123456':'arvind'};
-let registeredUsers = ['arvind','ashish']
-/*-------------------------------------------------------------------------*/
+let session = {'123456':'arvind','199617':'joy'};
+let registeredUsers = ['arvind','ashish','joy','goodman','foo']
 
-
-
-/*-------------------------------------------------------------------------*/
 app.use((req,res)=>{
   logger(fs,req,res);
 })
-
 app.get('/',(req,res)=>{
   res.redirect('/index.html');
 })
-
 app.get('/userpage',(req,res)=>{
   handler.handleUserpageReq(session,userpage,req,res)
 })
-
 app.usePostProcess((req,res)=>{
   handler.processStaticFileRequest(fs,req,res);
 });
-
 app.post('/login',(req,res)=>{
   handler.handleLoginPostReq(registeredUsers,session,req,res);
 })
-
 app.post('/addNewTodo',(req,res)=>{
+  console.log("Archivist users are: ",archivist._registeredUsers);
   handler.handleAddNewTodoReq(archivist,session,req,res);
 })
-
 app.get('/login.html',(req,res)=>{
   handler.handleGetLoginPageReq(loginPage,req,res)
 })
-
 app.get('/logout',(req,res)=>{
   handler.handleLogutReq(session,req,res);
 })
-
 app.get('/userDetails',(req,res)=>{
   handler.handleGetUserDetails(session,archivist,req,res);
 })
+app.setArchivist=(customArchivist)=>{
+  archivist=customArchivist;
+}
 module.exports = app;

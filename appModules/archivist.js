@@ -1,4 +1,5 @@
 const Todo = require('./todo.js');
+const User = require('./user.js');
 const fs = require('fs');
 
 const Archivist = function(storagePath){
@@ -8,34 +9,24 @@ const Archivist = function(storagePath){
 
 
 Archivist.prototype = {
-  load:function(){
-    try{
-      let fileContents = fs.readFileSync(this._storagePath,'utf8');
-      this._registeredUsers = JSON.parse(fileContents);
-      console.console.log(this._registeredUsers);
-    }catch(error){
-      return;
-    }
-  },
   getUser:function(userName){
     return this._registeredUsers[userName];
   },
   addNewTodo:function(userName,todoDetail){
     let user = this._registeredUsers[userName];
-
-    let todo = new Todo(todoDetail.title,todoDetail.description||'');
-    user[todoDetail.title] = todo;
+    user.addNewTodo(todoDetail.title,todoDetail.description||'');
   },
   deleteTodo:function(username,todoTitle){
     let user = this._registeredUsers[username];
-    delete user[todoTitle];
+    user.deleteTodo(todoTitle);
+  },
+  addTodoItem:function(userName,todoTitle,itemTitle){
+    let user = this._registeredUsers[userName];
+    user.addTodoItem(todoTitle,itemTitle);
   },
   editTodoTitle:function(username,oldTitle,newTitle){
     let user = this._registeredUsers[username];
-    let todo = user[oldTitle];
-    todo.editTitle(newTitle);
-    user[newTitle] = todo;
-    delete user[oldTitle];
+    user.editTodoTitle(oldTitle,newTitle);
   },
   editTodoDescription:function(username,newDescription){
     let user = this._registeredUsers[username];
@@ -43,7 +34,14 @@ Archivist.prototype = {
     todo.editDescription(newDescription);
   },
   addNewUser:function(username){
-    this._registeredUsers[username]={};
+    this._registeredUsers[username]=new User(username);
+  },
+  markTodoItemDone:function(username,todoTitle,itemTitle){
+    let user = this._registeredUsers[username];
+    user.markItemDone(todoTitle,itemTitle);
+  },
+  getUserTodos:function(username){
+    return this._registeredUsers[username].getAllTodo();
   }
 }
 module.exports = Archivist;

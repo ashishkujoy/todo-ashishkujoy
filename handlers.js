@@ -56,7 +56,8 @@ const handleLoginPostReq = function(registeredUsers,session,req,res){
     res.redirect('/login.html');
     return;
   }
-  let sessionid = 1996117;
+  //let sessionid = 1996117;
+  let sessionid = new Date().getTime();
   session[sessionid]=username;
   res.setHeader('Set-Cookie',`sessionid=${sessionid}`);
   res.redirect('/userpage');
@@ -72,6 +73,7 @@ const handleAddNewTodoReq = function(archivist,session,req,res){
   let sessionid = req.cookies.sessionid;
   let user = session[sessionid];
   let todoDetail = req.body;
+  console.log(`user is ${user}`);
   archivist.addNewTodo(user,todoDetail);
   res.redirect('/userpage');
   return;
@@ -106,6 +108,7 @@ const handleGetUserDetails = function(session,archivist,req,res) {
   }
   let userDetails = archivist.getUser(username);
   res.statusCode = 200;
+  res.setHeader('Content-Type','text/JSON')
   res.write(JSON.stringify(userDetails));
   res.end()
 }

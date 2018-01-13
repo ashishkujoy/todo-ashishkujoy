@@ -16,6 +16,8 @@ describe('User',function(){
       user.addNewTodo('hello');
       let expected = {'hello':new Todo('hello')};
       assert.deepEqual(user.getAllTodo(),expected);
+      user.addNewTodo('byebye');
+      assert.deepEqual(user.getAllTodo(),{'hello':new Todo('hello'),'byebye':new Todo('byebye')});
     })
   })
   describe('deleteTodo',function(){
@@ -27,7 +29,7 @@ describe('User',function(){
       assert.deepEqual(user.getAllTodo(),{});
     })
   })
-  describe('addItem',function(){
+  describe('addTodoItem',function(){
     it('should add a new todo item in user todo',function(){
       user.addNewTodo('todo1');
       user.addTodoItem('todo1','this is an item')

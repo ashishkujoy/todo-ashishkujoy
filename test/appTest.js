@@ -1,5 +1,6 @@
 let request = require('./requestSimulator.js');
 let app = require('../app.js');
+let Archivist=require('../appModules/archivist.js');
 let th = require('./testHelpers.js');
 
 
@@ -63,6 +64,9 @@ describe('app',function(){
   })
   describe('POST /addNewTodo',()=>{
     it('should redirect to /userpage',function(done){
+      let archivist=new Archivist();
+      archivist.addNewUser("arvind");
+      app.setArchivist(archivist);
       let options = {
         method:'POST',
         body:'title=todo',
@@ -111,16 +115,16 @@ describe('app',function(){
       })
     })
   })
-  describe.only('GET /userDetails',function(){
+  describe('GET /userDetails',function(){
     it('should give userDetails',function(done){
       let options ={
         method:'GET',
         url:'/userDetails',
-        headers:{cookie:'sessionid=123456'}
+        headers:{cookie:'sessionid=199617'}
       }
       request(app,options,res=>{
         th.status_is_ok(res);
-        th.body_contains(res,'{"arvind":"singh"}')
+        th.body_contains(res,'{"ashish":"kumar"}')
         done();
       })
     })
