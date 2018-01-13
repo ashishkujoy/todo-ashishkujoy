@@ -9,7 +9,7 @@ let archivist = {};
 beforeEach(function(){
   archivist = new Archivist('./appTestData.json');
 })
-describe.only('Archivist',function(){
+describe('Archivist',function(){
   describe('getUser',function(){
     it('should give the given user',function(){
       archivist.addNewUser('arvind');

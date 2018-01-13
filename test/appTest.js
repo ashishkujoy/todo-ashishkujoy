@@ -117,6 +117,10 @@ describe('app',function(){
   })
   describe('GET /userDetails',function(){
     it('should give userDetails',function(done){
+      let archivist=new Archivist();
+      archivist.addNewUser("joy");
+      archivist.addNewTodo('joy',{title:'testing get user'});
+      app.setArchivist(archivist);
       let options ={
         method:'GET',
         url:'/userDetails',
@@ -124,7 +128,8 @@ describe('app',function(){
       }
       request(app,options,res=>{
         th.status_is_ok(res);
-        th.body_contains(res,'{"ashish":"kumar"}')
+        th.body_contains(res,'testing get user')
+        console.log(res.body);
         done();
       })
     })

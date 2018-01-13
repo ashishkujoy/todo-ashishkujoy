@@ -56,7 +56,6 @@ const handleLoginPostReq = function(registeredUsers,session,req,res){
     res.redirect('/login.html');
     return;
   }
-  //let sessionid = 1996117;
   let sessionid = new Date().getTime();
   session[sessionid]=username;
   res.setHeader('Set-Cookie',`sessionid=${sessionid}`);
@@ -106,7 +105,9 @@ const handleGetUserDetails = function(session,archivist,req,res) {
     responseWithNotFound(res);
     return;
   }
-  let userDetails = archivist.getUser(username);
+  let user = archivist.getUser(username)
+  console.log(user);
+  let userDetails = lib.getUserDetails(user);
   res.statusCode = 200;
   res.setHeader('Content-Type','text/JSON')
   res.write(JSON.stringify(userDetails));

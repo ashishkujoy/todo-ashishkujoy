@@ -5,9 +5,9 @@ const lib = require('./lib.js');
 const Archivist = require('./appModules/archivist.js');
 
 let archivist = new Archivist('./appTestData.json');
-archivist.addNewUser('foo');
-archivist.addNewTodo('foo',{title:'foofaa'});
-archivist.addNewTodo('foo',{title:'foofaa2'});
+archivist.addNewUser('joy');
+archivist.addNewUser('arvind');
+archivist.addNewUser('pragya');
 const timeStamp = ()=>{
     let t = new Date();
     return `${t.toDateString()} ${t.toLocaleTimeString()}`;

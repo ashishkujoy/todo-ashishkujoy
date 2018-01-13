@@ -14,15 +14,12 @@ const displayTodoTitles = function(todoTitles) {
     todoList.appendChild(tr);
   }
 }
-let foo;
+
 const renderUserDetails = function(){
   let userDetails = JSON.parse(this.responseText);
-  foo = userDetails;
   console.log(userDetails);
-  //let username = userDetails.getName();
-  //let allTodo = userDetails.getAllTodo();
-  displayUserName(username);
-  displayTodoTitles(Object.keys(allTodo));
+  displayUserName(userDetails.username);
+  displayTodoTitles(userDetails.todos);
 }
 
 const requestUserDetails = function(){
