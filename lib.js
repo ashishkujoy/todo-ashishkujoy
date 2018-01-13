@@ -20,3 +20,12 @@ const getUserDetails = function(user){
   return details;
 }
 exports.getUserDetails = getUserDetails;
+
+const getTodoDetails = function(todo){
+  let todoDetail = {};
+  todoDetail.title = todo.getTitle();
+  todoDetail.description = todo.getDescription();
+  todoDetail.toItems = Object.keys(todo.getAllItems());
+  return todoDetail;
+}
+exports.getTodoDetails = getTodoDetails;

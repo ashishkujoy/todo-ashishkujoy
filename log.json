@@ -8854,3 +8854,1028 @@ GET
   "accept-language": "en-US,en;q=0.9",
   "cookie": "sessionid=1515830489998"
 }
+--------------------------------------------------------------
+Sat Jan 13 2018 1:41:04 PM
+GET
+/userpage
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/login.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515830489998"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:41:04 PM
+GET
+/login.html
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/login.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515830489998"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:41:09 PM
+POST
+/login
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "content-length": "12",
+  "cache-control": "max-age=0",
+  "origin": "http://localhost:8000",
+  "upgrade-insecure-requests": "1",
+  "content-type": "application/x-www-form-urlencoded",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/login.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515830489998"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:41:09 PM
+GET
+/userpage
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/login.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831069184"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:41:09 PM
+GET
+/javascript/userpage.js
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "*/*",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831069184"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:41:09 PM
+GET
+/userDetails
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "*/*",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831069184"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:41:12 PM
+GET
+/addNewTodo
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831069184"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:04 PM
+GET
+/logout
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/addNewTodo",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831069184"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:04 PM
+GET
+/index.html
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/addNewTodo",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:04 PM
+GET
+/css/index.css
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/css,*/*;q=0.1",
+  "referer": "http://localhost:8000/index.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:06 PM
+GET
+/userpage
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/index.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:06 PM
+GET
+/login.html
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/index.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:09 PM
+POST
+/login
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "content-length": "12",
+  "cache-control": "max-age=0",
+  "origin": "http://localhost:8000",
+  "upgrade-insecure-requests": "1",
+  "content-type": "application/x-www-form-urlencoded",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/login.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:09 PM
+GET
+/userpage
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/login.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831129475"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:09 PM
+GET
+/javascript/userpage.js
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "*/*",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831129475"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:09 PM
+GET
+/userDetails
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "*/*",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831129475"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:42:11 PM
+GET
+/addNewTodo
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831129475"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:15 PM
+GET
+/addNewTodo
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "upgrade-insecure-requests": "1",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831129475"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:22 PM
+POST
+/addNewTodo
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "content-length": "28",
+  "cache-control": "max-age=0",
+  "origin": "http://localhost:8000",
+  "upgrade-insecure-requests": "1",
+  "content-type": "application/x-www-form-urlencoded",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/addNewTodo",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831129475"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:22 PM
+GET
+/login.html
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/addNewTodo",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831129475"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:25 PM
+POST
+/login
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "content-length": "12",
+  "cache-control": "max-age=0",
+  "origin": "http://localhost:8000",
+  "upgrade-insecure-requests": "1",
+  "content-type": "application/x-www-form-urlencoded",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/login.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831129475"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:25 PM
+GET
+/userpage
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/login.html",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831205474"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:25 PM
+GET
+/javascript/userpage.js
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "*/*",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831205474"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:25 PM
+GET
+/userDetails
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "*/*",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831205474"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:26 PM
+GET
+/addNewTodo
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831205474"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:31 PM
+POST
+/addNewTodo
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "content-length": "26",
+  "cache-control": "max-age=0",
+  "origin": "http://localhost:8000",
+  "upgrade-insecure-requests": "1",
+  "content-type": "application/x-www-form-urlencoded",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/addNewTodo",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831205474"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:31 PM
+GET
+/userpage
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "referer": "http://localhost:8000/addNewTodo",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831205474"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:31 PM
+GET
+/javascript/userpage.js
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "*/*",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831205474"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 1:43:31 PM
+GET
+/userDetails
+{
+  "host": "localhost:8000",
+  "connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+  "accept": "*/*",
+  "referer": "http://localhost:8000/userpage",
+  "accept-encoding": "gzip, deflate, br",
+  "accept-language": "en-US,en;q=0.9",
+  "cookie": "sessionid=1515831205474"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/bad
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/index.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/userpage
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/userpage
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+POST
+/addNewTodo
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/login.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/login.html
+{
+  "cookie": "loginFailed=true; Max-Age=5"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/logout
+{
+  "cookies": "sessionid=123"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:33:36 PM
+GET
+/todoDetail
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/bad
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/index.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/userpage
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/userpage
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+POST
+/addNewTodo
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/login.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/login.html
+{
+  "cookie": "loginFailed=true; Max-Age=5"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/logout
+{
+  "cookies": "sessionid=123"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:34:39 PM
+GET
+/todoDetail
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/bad
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/index.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/userpage
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/userpage
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+POST
+/addNewTodo
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/login.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/login.html
+{
+  "cookie": "loginFailed=true; Max-Age=5"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/logout
+{
+  "cookies": "sessionid=123"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:35:13 PM
+GET
+/todoDetail
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/bad
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/index.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/userpage
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/userpage
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+POST
+/addNewTodo
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/login.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/login.html
+{
+  "cookie": "loginFailed=true; Max-Age=5"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/logout
+{
+  "cookies": "sessionid=123"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:36:43 PM
+GET
+/todoDetail
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:37:08 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:37:08 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:37:50 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:37:50 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:37:57 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:37:57 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:38:21 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:38:21 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:38:32 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:38:32 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:09 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:09 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:21 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:21 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/bad
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/index.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/userpage
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/userpage
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+POST
+/addNewTodo
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/login.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/login.html
+{
+  "cookie": "loginFailed=true; Max-Age=5"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/logout
+{
+  "cookies": "sessionid=123"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:41 PM
+GET
+/todoDetail
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/bad
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/index.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/userpage
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/userpage
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+POST
+/login
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+POST
+/addNewTodo
+{
+  "cookie": "sessionid=123456"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/login.html
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/login.html
+{
+  "cookie": "loginFailed=true; Max-Age=5"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/logout
+{
+  "cookies": "sessionid=123"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/userDetails
+{
+  "cookie": "sessionid=199617"
+}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/userDetails
+{}
+--------------------------------------------------------------
+Sat Jan 13 2018 2:39:52 PM
+GET
+/todoDetail
+{
+  "cookie": "sessionid=199617"
+}

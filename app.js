@@ -27,6 +27,7 @@ const logger = function(fs,req,res) {
 let app = WebApp.create();
 let userpage = fs.readFileSync('./public/userpage.html',"utf8");
 let loginPage = fs.readFileSync('./public/login.html','utf8');
+let addNewTodoPage = fs.readFileSync('./public/addTodoPage.html','utf8');
 let session = {'123456':'arvind','199617':'joy'};
 let registeredUsers = ['arvind','ashish','joy','goodman','foo']
 
@@ -49,6 +50,12 @@ app.post('/addNewTodo',(req,res)=>{
   console.log("Archivist users are: ",archivist._registeredUsers);
   handler.handleAddNewTodoReq(archivist,session,req,res);
 })
+app.get('/addNewTodo',(req,res)=>{
+  res.statusCode = 200;
+  res.setHeader = ('Content-Type','text/html');
+  res.write(addNewTodoPage);
+  res.end();
+})
 app.get('/login.html',(req,res)=>{
   handler.handleGetLoginPageReq(loginPage,req,res)
 })
@@ -57,6 +64,9 @@ app.get('/logout',(req,res)=>{
 })
 app.get('/userDetails',(req,res)=>{
   handler.handleGetUserDetails(session,archivist,req,res);
+})
+app.post('/todoDetail',(req,res)=>{
+  handler.handleGetTodoDetailReq(req,res);
 })
 app.setArchivist=(customArchivist)=>{
   archivist=customArchivist;

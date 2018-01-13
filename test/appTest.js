@@ -129,17 +129,33 @@ describe('app',function(){
       request(app,options,res=>{
         th.status_is_ok(res);
         th.body_contains(res,'testing get user')
-        console.log(res.body);
         done();
       })
     })
-    it('should give userDetails',function(done){
+    it('should give not found',function(done){
       let options ={
         method:'GET',
         url:'/userDetails'
       }
       request(app,options,res=>{
         th.status_is_not_found(res);
+        done();
+      })
+    })
+  })
+  describe('GET /todoDetail',function(){
+    it('should give the details of specified todo of logged in user',function(){
+      let options = {
+        method:'GET',url:'/todoDetail',data:'firstTodo',headers:{cookie:'sessionid=199617'}
+      }
+      let archivist=new Archivist();
+      archivist.addNewUser("joy");
+      archivist.addNewTodo('joy',{title:'firstTodo'});
+      archivist.addTodoItem('joy','firstTodo','testing it');
+      app.setArchivist(archivist);
+      request(app,options,res=>{
+        th.status_is_ok(res);
+        th.body_contains(res,'testing it')
         done();
       })
     })

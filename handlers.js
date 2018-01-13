@@ -105,8 +105,7 @@ const handleGetUserDetails = function(session,archivist,req,res) {
     responseWithNotFound(res);
     return;
   }
-  let user = archivist.getUser(username)
-  console.log(user);
+  let user = archivist.getUser(username);
   let userDetails = lib.getUserDetails(user);
   res.statusCode = 200;
   res.setHeader('Content-Type','text/JSON')
@@ -114,3 +113,15 @@ const handleGetUserDetails = function(session,archivist,req,res) {
   res.end()
 }
 exports.handleGetUserDetails=handleGetUserDetails
+
+const handleGetTodoDetailReq = function(session,req,res){
+  let sessionid = req.cookies.sessionid;
+  let todoTitle = req.body.title;
+  let username = session[sessionid];
+  let todo = archivist.getUser(username).getTodo(todoTitle);
+  let todoDetail = lib.getTodoDetails(todo);
+  res.statusCode = 200;
+  res.setHeader('Content-Type','text/JSON')
+  res.write(JSON.stringify(todoDetail));
+  res.end()
+}

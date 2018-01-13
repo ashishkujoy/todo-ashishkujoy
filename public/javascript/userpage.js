@@ -29,14 +29,28 @@ const requestUserDetails = function(){
   req.send();
 }
 
-const alertId = function(){
-  console.log(event.target.id)
+const getTodoTitle = function(event){
+  let id = event.target.id;
+  return document.getElementById(id).innerHTML;
 }
+
+const showTodoDetail = function(){
+  alert('get todo details');
+}
+
+const requestTodoDetails = function(){
+  let todoTitle = getTodoTitle(event);
+  let req = new XMLHttpRequest();
+  req.onload = showTodoDetail;
+  req.open('GET','/todoDetail');
+  req.send(todoTitle);
+}
+
 
 const startPage = function(){
   requestUserDetails();
   let table = document.getElementById('todo_list');
-  table.onclick=alertId;
+  table.onclick=requestTodoDetails;
 }
 
 window.onload = startPage;
