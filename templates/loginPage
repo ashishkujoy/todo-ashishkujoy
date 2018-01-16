@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>login Page</title>
-    <script src="../public/javascript" charset="utf-8"></script>
   </head>
   <body>
     <h1>login page</h1>

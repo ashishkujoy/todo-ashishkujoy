@@ -48,14 +48,12 @@ app.post('/login',(req,res)=>{
 app.get('/todos',(req,res)=>{
   handler.handleGetTodosReq(session,userRegistry,todos,req,res);
 })
-
-app.usePostProcess((req,res)=>{
-  handler.processStaticFileRequest(fs,req,res);
-});
 app.post('/addNewTodo',(req,res)=>{
   handler.handleAddNewTodoReq(userRegistry,session,req,res);
 })
-
+app.get('/todos/getTodoDetail',(req,res)=>{
+  handler.handleGetTodoDetail(req,res);
+})
 app.get('/logout',(req,res)=>{
   handler.handleLogoutReq(session,req,res);
 })
@@ -76,4 +74,7 @@ app.setUserRegistry=(customUserRegistry)=>{
 app.setSession = (customSession)=>{
   session = customSession;
 }
+app.usePostProcess((req,res)=>{
+  handler.processStaticFileRequest(fs,req,res);
+});
 module.exports = app;

@@ -13,8 +13,14 @@
       </div>
       <br />
       <br />
+      <div>
+        username: USERNAME<br />
+        <a href="/logout">logout</a>
+      </div>
+      <br />
+      <br />
       <div id='body'>
-        USERNAME
+
           <div id='todo_titles'>
             PUT TODOS TITLES HERE
           </div>
