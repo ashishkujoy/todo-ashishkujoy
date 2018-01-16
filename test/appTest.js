@@ -1,8 +1,8 @@
 let request = require('./requestSimulator.js');
 let app = require('../app.js');
-let Archivist=require('../appModules/archivist.js');
+let UserRegistry=require('../src/appModels/userRegistry.js');
 let th = require('./testHelpers.js');
-
+app.initialze
 
 describe('app',function(){
   describe('GET /bad',()=>{
@@ -43,7 +43,7 @@ describe('app',function(){
       request(app,{method:'GET',url:'/userpage',headers:{cookie:"sessionid=123456"}},res=>{
         th.status_is_ok(res);
         th.content_type_is(res,'text/html');
-        th.body_contains(res,'user page');
+        th.body_contains(res,'Welcome');
         done();
       })
     })
@@ -64,9 +64,9 @@ describe('app',function(){
   })
   describe('POST /addNewTodo',()=>{
     it('should redirect to /userpage',function(done){
-      let archivist=new Archivist();
+      let archivist=new UserRegistry();
       archivist.addNewUser("arvind");
-      app.setArchivist(archivist);
+      app.setUserRegistry(archivist);
       let options = {
         method:'POST',
         body:'title=todo',
@@ -79,6 +79,20 @@ describe('app',function(){
       })
     })
   });
+  describe('GET /addNewTodo.html',function(){
+    it('should give addNewTodo page',function(){
+      let archivist=new UserRegistry();
+      archivist.addNewUser("arvind");
+      app.setUserRegistry(archivist);
+      request(app,{method:'GET',url:'/addNewTodo'},res=>{
+        th.status_is_ok(res);
+        th.body_contains('description');
+        th.body_contains('logout');
+        th.body_contains('/userpage');
+        done();
+      })
+    })
+  })
   describe('GET /login.html',function(){
     it('should give the login.html page',function(done){
       let options = {
@@ -117,10 +131,10 @@ describe('app',function(){
   })
   describe('GET /userDetails',function(){
     it('should give userDetails',function(done){
-      let archivist=new Archivist();
+      let archivist=new UserRegistry();
       archivist.addNewUser("joy");
       archivist.addNewTodo('joy',{title:'testing get user'});
-      app.setArchivist(archivist);
+      app.setUserRegistry(archivist);
       let options ={
         method:'GET',
         url:'/userDetails',
@@ -143,16 +157,20 @@ describe('app',function(){
       })
     })
   })
-  describe('GET /todoDetail',function(){
-    it('should give the details of specified todo of logged in user',function(){
+  describe('POST /todoDetail',function(){
+    it('should give the details of specified todo of logged in user',function(done){
       let options = {
-        method:'GET',url:'/todoDetail',data:'firstTodo',headers:{cookie:'sessionid=199617'}
+        method:'POST',
+        url:'/todoDetail',
+        body:'title=firstTodo',
+        headers:{cookie:'sessionid=199617'}
       }
-      let archivist=new Archivist();
+      let archivist=new UserRegistry();
       archivist.addNewUser("joy");
       archivist.addNewTodo('joy',{title:'firstTodo'});
       archivist.addTodoItem('joy','firstTodo','testing it');
-      app.setArchivist(archivist);
+      app.setUserRegistry(archivist);
+      app.setSession({199617:'joy'});
       request(app,options,res=>{
         th.status_is_ok(res);
         th.body_contains(res,'testing it')

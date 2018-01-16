@@ -2,12 +2,12 @@ const WebApp = require('./webapp');
 const fs = require('fs');
 const handler = require('./handlers.js');
 const lib = require('./lib.js');
-const Archivist = require('./appModules/archivist.js');
+const UserRegistry = require('./src/appModels/userRegistry.js');
 
-let archivist = new Archivist('./appTestData.json');
-archivist.addNewUser('joy');
-archivist.addNewUser('arvind');
-archivist.addNewUser('pragya');
+let userRegistry = new UserRegistry('./appTestData.json');
+userRegistry.addNewUser('joy');
+userRegistry.addNewUser('arvind');
+userRegistry.addNewUser('pragya');
 const timeStamp = ()=>{
     let t = new Date();
     return `${t.toDateString()} ${t.toLocaleTimeString()}`;
@@ -27,7 +27,7 @@ const logger = function(fs,req,res) {
 let app = WebApp.create();
 let userpage = fs.readFileSync('./public/userpage.html',"utf8");
 let loginPage = fs.readFileSync('./public/login.html','utf8');
-let addNewTodoPage = fs.readFileSync('./public/addTodoPage.html','utf8');
+let addNewTodoPage = fs.readFileSync('./public/addNewTodo.html','utf8');
 let session = {'123456':'arvind','199617':'joy'};
 let registeredUsers = ['arvind','ashish','joy','goodman','foo']
 
@@ -38,7 +38,7 @@ app.get('/',(req,res)=>{
   res.redirect('/index.html');
 })
 app.get('/userpage',(req,res)=>{
-  handler.handleUserpageReq(session,userpage,req,res)
+  handler.handleUserpageReq(session,userpage,req,res);
 })
 app.usePostProcess((req,res)=>{
   handler.processStaticFileRequest(fs,req,res);
@@ -47,15 +47,9 @@ app.post('/login',(req,res)=>{
   handler.handleLoginPostReq(registeredUsers,session,req,res);
 })
 app.post('/addNewTodo',(req,res)=>{
-  console.log("Archivist users are: ",archivist._registeredUsers);
-  handler.handleAddNewTodoReq(archivist,session,req,res);
+  handler.handleAddNewTodoReq(userRegistry,session,req,res);
 })
-app.get('/addNewTodo',(req,res)=>{
-  res.statusCode = 200;
-  res.setHeader = ('Content-Type','text/html');
-  res.write(addNewTodoPage);
-  res.end();
-})
+
 app.get('/login.html',(req,res)=>{
   handler.handleGetLoginPageReq(loginPage,req,res)
 })
@@ -63,12 +57,20 @@ app.get('/logout',(req,res)=>{
   handler.handleLogutReq(session,req,res);
 })
 app.get('/userDetails',(req,res)=>{
-  handler.handleGetUserDetails(session,archivist,req,res);
+  handler.handleGetUserDetails(session,userRegistry,req,res);
 })
 app.post('/todoDetail',(req,res)=>{
-  handler.handleGetTodoDetailReq(req,res);
+  //change the name of handler.
+  //handler.handleGetTodoDetailReq(session,userRegistry,req,res);
+  console.log(req.body);
+  res.end()
 })
-app.setArchivist=(customArchivist)=>{
-  archivist=customArchivist;
+
+
+app.setUserRegistry=(customUserRegistry)=>{
+  userRegistry=customUserRegistry;
+}
+app.setSession = (customSession)=>{
+  session = customSession;
 }
 module.exports = app;

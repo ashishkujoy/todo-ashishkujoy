@@ -2,21 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/userpage.css">
     <script src="./javascript/userpage.js" charset="utf-8"></script>
-    <title>userpage</title>
+    <title>USER PAGE</title>
   </head>
   <body>
-    <h1>user page</h1>
-    <a href="/logout"><input type="button" value="logout"></a>
-    <center id='name_holder'>
+    <div id='container'>
+      <div id='heading'>
+        <center>Welcome</center>
+      </div>
+      <br />
+      <br />
+      <div id='body'>
+        USERNAME: <span id='username'></span><br />
+          <table id='todo_titles'>
 
-    </center>
-    <table id='todo_list'>
-      <!-- <tr id='10'>
-        <td id='1'>todo1</td>
-      </tr> -->
-    </table>
-    <a href="/addNewTodo"> <input type="button" value="add a todo"> </a>
+          </table>
+          <br />
+          <a href="/addNewTodo.html"><button type="button">ADD NEW TODO</button></a>
+      </div>
+    </div>
   </body>
 </html>

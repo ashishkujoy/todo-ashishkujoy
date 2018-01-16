@@ -114,7 +114,7 @@ const handleGetUserDetails = function(session,archivist,req,res) {
 }
 exports.handleGetUserDetails=handleGetUserDetails
 
-const handleGetTodoDetailReq = function(session,req,res){
+const handleGetTodoDetailReq = function(session,archivist,req,res){
   let sessionid = req.cookies.sessionid;
   let todoTitle = req.body.title;
   let username = session[sessionid];
@@ -125,3 +125,4 @@ const handleGetTodoDetailReq = function(session,req,res){
   res.write(JSON.stringify(todoDetail));
   res.end()
 }
+exports.handleGetTodoDetailReq=handleGetTodoDetailReq;

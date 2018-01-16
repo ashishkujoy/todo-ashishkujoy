@@ -1,24 +1,51 @@
-const displayUserName = function(name) {
-  let nameHolder = document.getElementById('name_holder');
-  nameHolder.innerHTML = name;
+const createInputTextField = function(name,value){
+  let input = document.createElement('input');
+  input.type = 'text';
+  input.name = name;
+  input.value = value;
+  input.disabled =true;
+  return input;
 }
 
-const displayTodoTitles = function(todoTitles) {
-  let todoList = document.getElementById('todo_list');
-  for(let index=0;index<todoTitles.length;index++){
-    let tr = document.createElement('tr');
-    let td = document.createElement('td');
-    td.innerHTML = todoTitles[index];
-    td.id = index;
-    tr.appendChild(td);
-    todoList.appendChild(tr);
+const createForm = function(method,action){
+  let form = document.createElement('form');
+  form.action = action;
+  form.method = method;
+  return form;
+}
+
+const createNewButton = function(type,value,onsubmit){
+  let button = document.createElement('button');
+  button.type = type;
+  button.innerText = value;
+  console.log(onsubmit);
+  button.onclick=onsubmit;
+  console.log(button.onclick);
+  return button;
+}
+
+const removeDisable = function (event) {
+  console.log(event.target.parentNode.children);
+  debugger;
+  event.target.parentNode.children[0].disabled=false;
+
+}
+
+const displayTodoTitles = function(titles){
+  let titleDiv = document.getElementById('todo_titles');
+  for(let count=0;count<titles.length;count++){
+    let title = titles[count];
+    let form = createForm('post','/todoDetail');
+    form.appendChild(createInputTextField('todoTitle',title));
+    form.appendChild(createNewButton('submit','view',removeDisable));
+    titleDiv.appendChild(form);
   }
 }
 
 const renderUserDetails = function(){
+  console.log(this.responseText);
   let userDetails = JSON.parse(this.responseText);
-  console.log(userDetails);
-  displayUserName(userDetails.username);
+  document.getElementById('username').innerText=userDetails.username
   displayTodoTitles(userDetails.todos);
 }
 
@@ -29,28 +56,8 @@ const requestUserDetails = function(){
   req.send();
 }
 
-const getTodoTitle = function(event){
-  let id = event.target.id;
-  return document.getElementById(id).innerHTML;
-}
-
-const showTodoDetail = function(){
-  alert('get todo details');
-}
-
-const requestTodoDetails = function(){
-  let todoTitle = getTodoTitle(event);
-  let req = new XMLHttpRequest();
-  req.onload = showTodoDetail;
-  req.open('GET','/todoDetail');
-  req.send(todoTitle);
-}
-
-
-const startPage = function(){
+const startWindow = function(){
   requestUserDetails();
-  let table = document.getElementById('todo_list');
-  table.onclick=requestTodoDetails;
 }
 
-window.onload = startPage;
+window.onload = startWindow;

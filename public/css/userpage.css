@@ -1,0 +1,30 @@
+#heading {
+  font-size: 2vw;
+}
+
+#body {
+  margin-left: 4vw;
+}
+
+#user {
+  margin-top: 4vw;
+  float:left;
+  width: '33%';
+  font-size: 1.3vw;
+}
+
+#todo {
+  float:left;
+  margin-top: 4vw;
+  width: '33%';
+  margin-left: 4vw;
+  font-size: 1.3vw;
+}
+
+#item {
+  float:left;
+  margin-top: 4vw;
+  width: '33%';
+  margin-left: 4vw;
+  font-size: 1.3vw;
+}

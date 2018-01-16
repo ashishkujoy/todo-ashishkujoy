@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/STEP-tw/todo-ashishkujoy#readme",
   "devDependencies": {
+    "mocha":"^4.1.0",
     "chai": "^4.1.2"
   }
 }

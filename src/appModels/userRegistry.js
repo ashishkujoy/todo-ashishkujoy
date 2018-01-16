@@ -2,19 +2,19 @@ const Todo = require('./todo.js');
 const User = require('./user.js');
 const fs = require('fs');
 
-const Archivist = function(storagePath){
+const UserRegistry = function(storagePath){
   this._storagePath = storagePath;
   this._registeredUsers = {};
 }
 
 
-Archivist.prototype = {
+UserRegistry.prototype = {
   getUser:function(userName){
     return this._registeredUsers[userName];
   },
   addNewTodo:function(userName,todoDetail){
     let user = this._registeredUsers[userName];
-    user.addNewTodo(todoDetail.title,todoDetail.description||'');
+    return user.addNewTodo(todoDetail.title,todoDetail.description||'');
   },
   deleteTodo:function(username,todoTitle){
     let user = this._registeredUsers[username];
@@ -22,7 +22,7 @@ Archivist.prototype = {
   },
   addTodoItem:function(userName,todoTitle,itemTitle){
     let user = this._registeredUsers[userName];
-    user.addTodoItem(todoTitle,itemTitle);
+    return user.addTodoItem(todoTitle,itemTitle);
   },
   editTodoTitle:function(username,oldTitle,newTitle){
     let user = this._registeredUsers[username];
@@ -44,4 +44,4 @@ Archivist.prototype = {
     return this._registeredUsers[username].getAllTodo();
   }
 }
-module.exports = Archivist;
+module.exports = UserRegistry;

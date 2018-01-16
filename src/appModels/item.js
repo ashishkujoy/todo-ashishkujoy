@@ -1,6 +1,7 @@
-const Item = function(title) {
+const Item = function(title,id) {
   this._title = title;
   this._done = false;
+  this._id = id;
 }
 
 Item.prototype ={
@@ -18,6 +19,9 @@ Item.prototype ={
   },
   changeTitle:function(newTitle){
     this._title = newTitle;
+  },
+  getId:function(){
+    return this._id;
   }
 }
 

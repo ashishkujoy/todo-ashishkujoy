@@ -1,0 +1,9 @@
+
+✔ rename archivist to userRegistry. @done(2018-01-15 14:59)
+✔ add unique id field in todo's of user. @done(2018-01-15 15:08)
+☐ use get method for getting todo details.
+☐ have to inject depandency in app(session,userRegistry) before using app function.
+☐ rename folders (lib,utils etc they are too generic).
+☐ create template folder for templates, outside public.
+☐ use button for post instead of  links.
+☐ deliver homepage on / url instead of redirectic to /index page.

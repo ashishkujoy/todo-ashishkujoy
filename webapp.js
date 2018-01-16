@@ -1,3 +1,4 @@
+const querystring = require('querystring');
 const toKeyValue = kv=>{
   let parts = kv.split('=');
   return {key:parts[0].trim(),value:parts[1].trim()};
@@ -8,13 +9,11 @@ const accumulate = (o,kv)=> {
   return o;
 };
 
-const parseBody = function(text) {
-  try{
-    return text && text.split('&').map(toKeyValue).reduce(accumulate,{}) || {};
-  }catch(error){
-    return {};
-  }
+const parseBody = function(text){
+  return querystring.parse(text);
 }
+
+
 let redirect = function(path){
   this.statusCode = 302;
   this.setHeader('location',path);

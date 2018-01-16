@@ -1,27 +1,34 @@
 const Item = require('./item.js');
-const Todo = function(title,description) {
+const Todo = function(id,title,description) {
+  this._id = id;
   this._title = title;
   this._description = description || '';
   this._items = {};
+  this._uniqueIdCounter = 0;
 }
 
 Todo.prototype = {
   addItem:function(itemTitle){
-    this._items[itemTitle] = new Item(itemTitle);
+    this._items[this._uniqueIdCounter] = new Item(itemTitle,this._uniqueIdCounter);
+    this._uniqueIdCounter++;
+    return this._uniqueIdCounter-1;
   },
-  deleteItem:function(itemTitle){
-    delete this._items[itemTitle];
+  getId:function(){
+    return this._id;
   },
-  markDone:function(itemTitle){
-    let item = this._items[itemTitle];
+  deleteItem:function(itemId){
+    delete this._items[itemId];
+  },
+  markDone:function(itemId){
+    let item = this._items[itemId];
     item.markDone();
   },
-  unMarkDone:function(itemTitle){
-    let item = this._items[itemTitle];
+  unMarkDone:function(itemId){
+    let item = this._items[itemId];
     item.unMarkDone();
   },
-  getItem:function(itemTitle){
-    return this._items[itemTitle];
+  getItem:function(itemId){
+    return this._items[itemId];
   },
   getAllItems:function(){
     return this._items;
@@ -38,11 +45,9 @@ Todo.prototype = {
   getDescription:function(){
     return this._description;
   },
-  editItemTitle:function(itemTitle,newTitle){
-    let item = this._items[itemTitle];
+  editItemTitle:function(itemId,newTitle){
+    let item = this._items[itemId];
     item.changeTitle(newTitle);
-    this._items[newTitle]=item;
-    delete this._items[itemTitle];
   }
 }
 module.exports = Todo;
