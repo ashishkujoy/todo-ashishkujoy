@@ -1,4 +1,5 @@
 const querystring = require('querystring');
+const url = require('url');
 const toKeyValue = kv=>{
   let parts = kv.split('=');
   return {key:parts[0].trim(),value:parts[1].trim()};
@@ -70,10 +71,15 @@ const runPostProcessors = function(postProcessors,req,res) {
 }
 
 const main = function(req,res){
+  let parsedUrl= url.parse(req.url,true);
+  req.url = parsedUrl.pathname;
+  req.queryParams = parsedUrl.query;
   res.redirect = redirect.bind(res);
   req.urlIsOneOf = urlIsOneOf.bind(req);
   req.cookies = parseCookies(req.headers.cookie||'');
   let content="";
+  console.log(req.url);
+  console.log(req.method)
   req.on('data',data=>content+=data.toString())
   req.on('end',()=>{
     req.body = parseBody(content);

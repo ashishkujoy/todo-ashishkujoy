@@ -54,6 +54,10 @@ User.prototype = {
   },
   getTodoDescription:function(todoId){
     return this._todos[todoId].getDescription();
+  },
+  mapTodos:function(mapper){
+    let todos = Object.values(this._todos);
+    return todos.map(mapper)
   }
 }
 

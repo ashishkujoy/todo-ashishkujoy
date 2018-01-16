@@ -7,3 +7,5 @@
 ☐ create template folder for templates, outside public.
 ☐ use button for post instead of  links.
 ☐ deliver homepage on / url instead of redirectic to /index page.
+✔ make lib folder and move handler and other small function there. @done(2018-01-16 12:44)
+☐ rename lib.js to a specific name.

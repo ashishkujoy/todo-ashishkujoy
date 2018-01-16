@@ -43,21 +43,19 @@ const displayTodoTitles = function(titles){
 }
 
 const renderUserDetails = function(){
-  console.log(this.responseText);
-  let userDetails = JSON.parse(this.responseText);
-  document.getElementById('username').innerText=userDetails.username
-  displayTodoTitles(userDetails.todos);
+  let todoTitles = document.getElementById('todo_titles')
+  todoTitles.innerHTML = this.responseText;
 }
 
 const requestUserDetails = function(){
   let req = new XMLHttpRequest();
-  req.open('GET','/userDetails');
+  req.open('GET','/todos');
   req.onload=renderUserDetails;
   req.send();
 }
 
 const startWindow = function(){
-  requestUserDetails();
+  //requestUserDetails();
 }
 
 window.onload = startWindow;
