@@ -14,6 +14,17 @@ const parseBody = function(text){
   return querystring.parse(text);
 }
 
+const injectDependencies = function(dependencies){
+  this._dependencies = dependencies;
+}
+
+const loadDependenciesInReq = function(req){
+  let app = this;
+  let dependencies = Object.keys(this._dependencies);
+  dependencies.map(function(dependency){
+    req[dependency] = app._dependencies[dependency];
+  })
+}
 
 let redirect = function(path){
   this.statusCode = 302;
@@ -41,6 +52,7 @@ const initialize = function(){
   this._handlers = {GET:{},POST:{}};
   this._preprocess = [];
   this._postProcesses = [];
+  this._dependencies = {};
 };
 
 const get = function(url,handler){
@@ -72,14 +84,13 @@ const runPostProcessors = function(postProcessors,req,res) {
 
 const main = function(req,res){
   let parsedUrl= url.parse(req.url,true);
+  loadDependenciesInReq.call(this,req);
   req.url = parsedUrl.pathname;
   req.queryParams = parsedUrl.query;
   res.redirect = redirect.bind(res);
   req.urlIsOneOf = urlIsOneOf.bind(req);
   req.cookies = parseCookies(req.headers.cookie||'');
   let content="";
-  console.log(req.url);
-  console.log(req.method)
   req.on('data',data=>content+=data.toString())
   req.on('end',()=>{
     req.body = parseBody(content);
@@ -104,6 +115,7 @@ let create = ()=>{
   rh.post = post;
   rh.use = use;
   rh.usePostProcess=usePostProcess;
+  rh.injectDependencies = injectDependencies;
   return rh;
 }
 exports.create = create;

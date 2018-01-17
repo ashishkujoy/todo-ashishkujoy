@@ -9,3 +9,12 @@
 ☐ deliver homepage on / url instead of redirectic to /index page.
 ✔ make lib folder and move handler and other small function there. @done(2018-01-16 12:44)
 ☐ rename lib.js to a specific name.
+☐ find a better place for logger function.
+
+
+
+✔ /badFile  @done(2018-01-17 07:57)
+✔ /login  @done(2018-01-17 07:58)
+✔/login post  @done(2018-01-17 08:02)
+✔ get /todos  @done(2018-01-17 08:02)
+☐ 

@@ -1,3 +1,4 @@
+let fs = require('fs');
 let request = require('./requestSimulator.js');
 let app = require('../app.js');
 let UserRegistry=require('../src/appModels/userRegistry.js');
@@ -22,25 +23,18 @@ describe('app',function(){
       })
     })
   })
-  describe('GET /todos',()=>{
-    it('should redirect to login page if user is not logged in',function(done){
-      request(app,{method:'GET',url:'/todos',cookies:{}},res=>{
-        th.should_be_redirected_to(res,'/login');
-        done();
-      })
-    })
-    it('give the todos page',(done)=>{
-      request(app,{method:'GET',url:'/todos',headers:{cookie:"sessionid=123456"}},res=>{
-        th.status_is_ok(res);
-        th.content_type_is(res,'text/html');
-        th.body_contains(res,'Welcome');
-        done();
-      })
-    })
-  })
   describe('POST /login',()=>{
+    let userRegistry = new UserRegistry('./appTestData.json');
+    let user=userRegistry.addNewUser('joy')
+    let dependencies = {
+      fs:fs,
+      session:{123456:user},
+      registeredUsers:['joy'],
+      userRegistry:userRegistry
+    }
+    app.injectDependencies(dependencies);
     it('should redirect to todos page',function(done){
-      request(app,{method:'POST',url:'/login',body:'username=ashish'},res=>{
+      request(app,{method:'POST',url:'/login',body:'username=joy'},res=>{
         th.should_be_redirected_to(res,'/todos');
         done();
       })
@@ -52,11 +46,44 @@ describe('app',function(){
       })
     })
   })
-  describe.skip('POST /addNewTodo',()=>{
+  describe('GET /todos',()=>{
+    let userRegistry = new UserRegistry();
+    let user = userRegistry.addNewUser('joy');
+    let todoId=user.addNewTodo('this is first todo')
+    let dependencies = {
+      fs:fs,
+      session:{1234:user},
+      registeredUsers:['joy'],
+      userRegistry:userRegistry
+    }
+    it('should redirect to login page if user is not logged in',function(done){
+      app.injectDependencies(dependencies);
+      request(app,{method:'GET',url:'/todos',cookies:{}},res=>{
+        th.should_be_redirected_to(res,'/login');
+        done();
+      })
+    })
+    it('give the todos page',(done)=>{
+      app.injectDependencies(dependencies);
+      request(app,{method:'GET',url:'/todos',headers:{cookie:"sessionid=1234"}},res=>{
+        th.status_is_ok(res);
+        th.content_type_is(res,'text/html');
+        th.body_contains(res,'Welcome');
+        th.body_contains(res,'this is first todo');
+        done();
+      })
+    })
+  })
+  describe('POST /addNewTodo',()=>{
     it('should redirect to /userpage',function(done){
-      let archivist=new UserRegistry();
-      archivist.addNewUser("arvind");
-      app.setUserRegistry(archivist);
+      let userRegistry = new UserRegistry('./appTestData.json');
+      let user = userRegistry.addNewUser('joy');
+      let dependencies = {
+        fs:fs,
+        session:{123456:user},
+        userRegistry:userRegistry
+      }
+      app.injectDependencies(dependencies);
       let options = {
         method:'POST',
         body:'title=todo',
@@ -64,16 +91,21 @@ describe('app',function(){
         url:'/addNewTodo'
       }
       request(app,options,res=>{
-        th.should_be_redirected_to(res,'/userpage');
+        th.should_be_redirected_to(res,'/todos');
         done();
       })
     })
   });
-  describe.skip('GET /addNewTodo.html',function(){
+  describe('GET /addNewTodo.html',function(){
     it('should give addNewTodo page',function(){
-      let archivist=new UserRegistry();
-      archivist.addNewUser("arvind");
-      app.setUserRegistry(archivist);
+      let userRegistry = new UserRegistry('./appTestData.json');
+      let user = userRegistry.addNewUser('joy');
+      let dependencies = {
+        fs:fs,
+        session:{123456:user},
+        userRegistry:userRegistry
+      }
+      app.injectDependencies(dependencies);
       request(app,{method:'GET',url:'/addNewTodo'},res=>{
         th.status_is_ok(res);
         th.body_contains('description');
@@ -111,6 +143,14 @@ describe('app',function(){
     })
   })
   describe('GET /logout',function(){
+    let userRegistry = new UserRegistry('./appTestData.json');
+    let dependencies = {
+      fs:fs,
+      session:{123456:'arvind'},
+      registeredUsers:['arvind'],
+      userRegistry:userRegistry
+    }
+    app.injectDependencies(dependencies);
     it('should redirect to /login',function(done){
       request(app,{method:'GET',url:'/logout',headers:{cookies:'sessionid=123'}},res=>{
         th.should_be_redirected_to(res,'/login');
@@ -119,52 +159,23 @@ describe('app',function(){
       })
     })
   })
-  describe.skip('GET /userDetails',function(){
-    it('should give userDetails',function(done){
-      let archivist=new UserRegistry();
-      archivist.addNewUser("joy");
-      archivist.addNewTodo('joy',{title:'testing get user'});
-      app.setUserRegistry(archivist);
-      let options ={
-        method:'GET',
-        url:'/userDetails',
-        headers:{cookie:'sessionid=199617'}
+  describe('dynamic url',function(){
+    describe.only('get /todo/{titleId}',function(){
+      let userRegistry = new UserRegistry('./appTestData.json');
+      let user=userRegistry.addNewUser('joy');
+      let todoId=user.addNewTodo('joy','this is first todo');
+      let itemId = user.addTodoItem(todoId,'this is item');
+      let dependencies = {
+        fs:fs,
+        session:{123456:[user]},
+        userRegistry:userRegistry
       }
-      request(app,options,res=>{
-        th.status_is_ok(res);
-        th.body_contains(res,'testing get user')
-        done();
-      })
-    })
-    it('should give not found',function(done){
-      let options ={
-        method:'GET',
-        url:'/userDetails'
-      }
-      request(app,options,res=>{
-        th.status_is_not_found(res);
-        done();
-      })
-    })
-  })
-  describe.skip('POST /todoDetail',function(){
-    it('should give the details of specified todo of logged in user',function(done){
-      let options = {
-        method:'POST',
-        url:'/todoDetail',
-        body:'title=firstTodo',
-        headers:{cookie:'sessionid=199617'}
-      }
-      let archivist=new UserRegistry();
-      archivist.addNewUser("joy");
-      archivist.addNewTodo('joy',{title:'firstTodo'});
-      archivist.addTodoItem('joy','firstTodo','testing it');
-      app.setUserRegistry(archivist);
-      app.setSession({199617:'joy'});
-      request(app,options,res=>{
-        th.status_is_ok(res);
-        th.body_contains(res,'testing it')
-        done();
+      app.injectDependencies(dependencies);
+      it('should give the todo detail',function(done){
+        request(app,{method:'GET',url:'/todo/0',headers:{cookie:'sessionid=123456'}},res=>{
+          th.status_is_ok(res);
+          th.body_contains('this is first todo');
+        })
       })
     })
   })

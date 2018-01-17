@@ -1,4 +1,7 @@
-let foo;
 const getTodoDetail = function(){
-  foo  = event;
+  let titleId = event.target.parentElement.id;
+  let req =  new XMLRequest();
+  req.onload = renderServerResponse;
+  req.open('GET',`/todo/${titleId}`);
+  req.send();
 }

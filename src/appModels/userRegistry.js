@@ -34,7 +34,7 @@ UserRegistry.prototype = {
     todo.editDescription(newDescription);
   },
   addNewUser:function(username){
-    this._registeredUsers[username]=new User(username);
+    return this._registeredUsers[username]=new User(username);
   },
   markTodoItemDone:function(username,todoTitle,itemTitle){
     let user = this._registeredUsers[username];

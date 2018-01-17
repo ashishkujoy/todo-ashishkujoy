@@ -48,6 +48,10 @@ Todo.prototype = {
   editItemTitle:function(itemId,newTitle){
     let item = this._items[itemId];
     item.changeTitle(newTitle);
+  },
+  mapItems:function(mapper){
+    let items = Object.values(this._items);
+    return items.map(mapper);
   }
 }
 module.exports = Todo;
