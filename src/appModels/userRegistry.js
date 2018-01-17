@@ -2,8 +2,7 @@ const Todo = require('./todo.js');
 const User = require('./user.js');
 const fs = require('fs');
 
-const UserRegistry = function(storagePath){
-  this._storagePath = storagePath;
+const UserRegistry = function(){
   this._registeredUsers = {};
 }
 

@@ -3,7 +3,20 @@ let request = require('./requestSimulator.js');
 let app = require('../app.js');
 let UserRegistry=require('../src/appModels/userRegistry.js');
 let th = require('./testHelpers.js');
-app.initialze
+
+let user;
+let sessionid = 123456;
+let dependencies = {
+  fs:fs,
+  session:{[sessionid]:user}
+}
+
+beforeEach(function(){
+  let userRegistry = new UserRegistry();
+  let newUser = userRegistry.addNewUser('joy');
+  dependencies.session[sessionid]=newUser;
+  dependencies.userRegistry = userRegistry;
+})
 
 describe('app',function(){
   describe('GET /bad',()=>{
@@ -24,16 +37,8 @@ describe('app',function(){
     })
   })
   describe('POST /login',()=>{
-    let userRegistry = new UserRegistry('./appTestData.json');
-    let user=userRegistry.addNewUser('joy')
-    let dependencies = {
-      fs:fs,
-      session:{123456:user},
-      registeredUsers:['joy'],
-      userRegistry:userRegistry
-    }
-    app.injectDependencies(dependencies);
     it('should redirect to todos page',function(done){
+      app.injectDependencies(dependencies);
       request(app,{method:'POST',url:'/login',body:'username=joy'},res=>{
         th.should_be_redirected_to(res,'/todos');
         done();
@@ -47,16 +52,8 @@ describe('app',function(){
     })
   })
   describe('GET /todos',()=>{
-    let userRegistry = new UserRegistry();
-    let user = userRegistry.addNewUser('joy');
-    let todoId=user.addNewTodo('this is first todo')
-    let dependencies = {
-      fs:fs,
-      session:{1234:user},
-      registeredUsers:['joy'],
-      userRegistry:userRegistry
-    }
     it('should redirect to login page if user is not logged in',function(done){
+      let user = dependencies.session[sessionid];
       app.injectDependencies(dependencies);
       request(app,{method:'GET',url:'/todos',cookies:{}},res=>{
         th.should_be_redirected_to(res,'/login');
@@ -64,8 +61,10 @@ describe('app',function(){
       })
     })
     it('give the todos page',(done)=>{
+      let user = dependencies.session[sessionid];
+      user.addNewTodo('this is first todo');
       app.injectDependencies(dependencies);
-      request(app,{method:'GET',url:'/todos',headers:{cookie:"sessionid=1234"}},res=>{
+      request(app,{method:'GET',url:'/todos',headers:{cookie:"sessionid=123456"}},res=>{
         th.status_is_ok(res);
         th.content_type_is(res,'text/html');
         th.body_contains(res,'Welcome');
@@ -76,14 +75,7 @@ describe('app',function(){
   })
   describe('POST /addNewTodo',()=>{
     it('should redirect to /userpage',function(done){
-      let userRegistry = new UserRegistry('./appTestData.json');
-      let user = userRegistry.addNewUser('joy');
-      let dependencies = {
-        fs:fs,
-        session:{123456:user},
-        userRegistry:userRegistry
-      }
-      app.injectDependencies(dependencies);
+
       let options = {
         method:'POST',
         body:'title=todo',
@@ -98,13 +90,6 @@ describe('app',function(){
   });
   describe('GET /addNewTodo.html',function(){
     it('should give addNewTodo page',function(){
-      let userRegistry = new UserRegistry('./appTestData.json');
-      let user = userRegistry.addNewUser('joy');
-      let dependencies = {
-        fs:fs,
-        session:{123456:user},
-        userRegistry:userRegistry
-      }
       app.injectDependencies(dependencies);
       request(app,{method:'GET',url:'/addNewTodo'},res=>{
         th.status_is_ok(res);
@@ -116,6 +101,7 @@ describe('app',function(){
     })
   })
   describe('GET /login',function(){
+    app.injectDependencies(dependencies);
     it('should give the login page',function(done){
       let options = {
         method:'GET',
@@ -128,6 +114,7 @@ describe('app',function(){
         done()
       })
     })
+    app.injectDependencies(dependencies);
     it('should give the login.html page with login failed message',function(done){
       let options = {
         method:'GET',
@@ -143,13 +130,6 @@ describe('app',function(){
     })
   })
   describe('GET /logout',function(){
-    let userRegistry = new UserRegistry('./appTestData.json');
-    let dependencies = {
-      fs:fs,
-      session:{123456:'arvind'},
-      registeredUsers:['arvind'],
-      userRegistry:userRegistry
-    }
     app.injectDependencies(dependencies);
     it('should redirect to /login',function(done){
       request(app,{method:'GET',url:'/logout',headers:{cookies:'sessionid=123'}},res=>{
@@ -160,22 +140,35 @@ describe('app',function(){
     })
   })
   describe('dynamic url',function(){
-    describe.only('get /todo/0',function(){
-      let userRegistry = new UserRegistry('./appTestData.json');
-      let user=userRegistry.addNewUser('joy');
-      let todoId=user.addNewTodo('this is first todo');
-      let itemId = user.addTodoItem(todoId,'this is item');
-      let dependencies = {
-        fs:fs,
-        session:{123456:user},
-        userRegistry:userRegistry
-      }
-      app.injectDependencies(dependencies);
+    describe('get /todo/0',function(){
       it('should give the todo detail',function(done){
+        let user = dependencies.session[sessionid];
+        let todoId = user.addNewTodo('this is first todo');
+        let item = user.addTodoItem(todoId,'this is first item');
+        app.injectDependencies(dependencies);
         request(app,{method:'GET',url:'/todo/0',headers:{cookie:'sessionid=123456'}},res=>{
           th.status_is_ok(res);
           th.body_contains(res,'this is first todo');
           th.body_contains(res,'<button onclick=editTitle()>edit</button>');
+          done();
+        })
+      })
+    })
+    describe('post /todo/0/addNewItem',function(){
+      it('should add new item in user todo',function(done){
+        user = dependencies.session[sessionid];
+        let todoId = user.addNewTodo('this is first todo');
+        let itemId = user.addTodoItem(todoId,'this is first item');
+        app.injectDependencies(dependencies);
+        let options = {
+          url:'/todo/0/addNewItem',
+          method:'POST',
+          body:'itemName=this is first item',
+          headers:{cookie:'sessionid=123456'}
+        }
+        request(app,options,function(res){
+          th.status_is_ok(res);
+          th.body_contains(res,'this is first item');
           done();
         })
       })

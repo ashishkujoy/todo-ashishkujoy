@@ -15,10 +15,10 @@ const loadUser = function(req,res) {
 }
 
 app.use(loadUser);
-app.use(handler.parseUrl);
 app.use((req,res)=>{
   handler.logger(fs,req,res);
 })
+app.use(handler.parseUrl);
 app.get('/',function(req,res){
   handler.deliverFile(loginPage,'text/html',res);
 })
@@ -43,12 +43,7 @@ app.get('/userDetails',(req,res)=>{
 app.get('/todo',function(req,res){
   handler.handleGetTodoReq(req,res);
 })
-app.setUserRegistry=(customUserRegistry)=>{
-  userRegistry=customUserRegistry;
-}
-app.setSession = (customSession)=>{
-  session = customSession;
-}
+app.post('/todo/addNewItem',handler.handleAddNewItemReq);
 app.usePostProcess((req,res)=>{
   handler.processStaticFileRequest(fs,req,res);
 });
