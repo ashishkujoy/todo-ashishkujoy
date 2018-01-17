@@ -14,9 +14,8 @@ const loadUser = function(req,res) {
   if(user) req.user = user;
 }
 
-
 app.use(loadUser);
-
+app.use(handler.parseUrl);
 app.use((req,res)=>{
   handler.logger(fs,req,res);
 })
@@ -42,10 +41,6 @@ app.get('/userDetails',(req,res)=>{
   handler.handleGetUserDetails(req,res);
 })
 
-app.usePostProcess((req,res)=>{
-  handler.handleDynamicUrl(req,res);
-})
-
 app.setUserRegistry=(customUserRegistry)=>{
   userRegistry=customUserRegistry;
 }
@@ -55,4 +50,5 @@ app.setSession = (customSession)=>{
 app.usePostProcess((req,res)=>{
   handler.processStaticFileRequest(fs,req,res);
 });
+
 module.exports = app;
