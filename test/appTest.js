@@ -160,21 +160,23 @@ describe('app',function(){
     })
   })
   describe('dynamic url',function(){
-    describe.only('get /todo/{titleId}',function(){
+    describe.only('get /todo/0',function(){
       let userRegistry = new UserRegistry('./appTestData.json');
       let user=userRegistry.addNewUser('joy');
-      let todoId=user.addNewTodo('joy','this is first todo');
+      let todoId=user.addNewTodo('this is first todo');
       let itemId = user.addTodoItem(todoId,'this is item');
       let dependencies = {
         fs:fs,
-        session:{123456:[user]},
+        session:{123456:user},
         userRegistry:userRegistry
       }
       app.injectDependencies(dependencies);
       it('should give the todo detail',function(done){
         request(app,{method:'GET',url:'/todo/0',headers:{cookie:'sessionid=123456'}},res=>{
           th.status_is_ok(res);
-          th.body_contains('this is first todo');
+          th.body_contains(res,'this is first todo');
+          th.body_contains(res,'<button onclick=editTitle()>edit</button>');
+          done();
         })
       })
     })

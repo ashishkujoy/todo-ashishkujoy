@@ -40,7 +40,9 @@ app.get('/logout',(req,res)=>{
 app.get('/userDetails',(req,res)=>{
   handler.handleGetUserDetails(req,res);
 })
-
+app.get('/todo',function(req,res){
+  handler.handleGetTodoReq(req,res);
+})
 app.setUserRegistry=(customUserRegistry)=>{
   userRegistry=customUserRegistry;
 }

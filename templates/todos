@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/userpage.css">
+    <link rel="stylesheet" href="./css/todos.css">
     <script src="/javascript/todos.js" charset="utf-8"></script>
     <title>todos</title>
   </head>
@@ -26,6 +26,11 @@
           </div>
           <br />
           <a href="/addNewTodo.html"><button type="button">ADD NEW TODO</button></a>
+      </div>
+      <br />
+      <br />
+      <div id='todo'>
+
       </div>
     </div>
   </body>

@@ -83,10 +83,7 @@ const runPostProcessors = function(postProcessors,req,res) {
 }
 
 const main = function(req,res){
-  let parsedUrl= url.parse(req.url,true);
   loadDependenciesInReq.call(this,req);
-  req.url = parsedUrl.pathname;
-  req.queryParams = parsedUrl.query;
   res.redirect = redirect.bind(res);
   req.urlIsOneOf = urlIsOneOf.bind(req);
   req.cookies = parseCookies(req.headers.cookie||'');
